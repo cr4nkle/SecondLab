@@ -26,7 +26,12 @@ namespace FormsFor
             double money = double.Parse(this.textBox1.Text);            
             double per_money = double.Parse(this.textBox2.Text);
             double pay = double.Parse(this.textBox3.Text);
-            
+            Properties.Settings.Default.money = money;
+            Properties.Settings.Default.per_money = per_money;
+            Properties.Settings.Default.pay = pay;
+            Properties.Settings.Default.Save();
+
+
             bool check = Logic.Check(money, pay, per_money);
             
             if (check)
