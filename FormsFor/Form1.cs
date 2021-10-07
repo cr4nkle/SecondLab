@@ -23,9 +23,20 @@ namespace FormsFor
         private void button1_Click(object sender, EventArgs e)
         {
             string[] month = new string[] { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
-            double money = double.Parse(this.textBox1.Text);            
-            double per_money = double.Parse(this.textBox2.Text);
-            double pay = double.Parse(this.textBox3.Text);
+            double money, per_money, pay;
+            try
+            {
+                money = double.Parse(this.textBox1.Text);
+                per_money = double.Parse(this.textBox2.Text);
+                pay = double.Parse(this.textBox3.Text);
+
+            }
+            catch (FormatException) {
+                MessageBox.Show("Вы ввели некорректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+        
             Properties.Settings.Default.money = money;
             Properties.Settings.Default.per_money = per_money;
             Properties.Settings.Default.pay = pay;
@@ -39,8 +50,10 @@ namespace FormsFor
                 int month_number = Logic.GetMonth(money, per_money);
                 
                 int count = Logic.GetCount(money, pay);
-                _ = MessageBox.Show("а) за какой месяц величина ежемесячного увеличения вклада превысит B руб." + "\n" +month[month_number] 
-                    + "\n" + "б) через сколько месяцев размер вклада превысит C руб." + "\n" + count);
+                MessageBox.Show($"а) за какой месяц величина ежемесячного увеличения вклада превысит B руб.\n" +
+                    $".{month[month_number]}\n" +
+                    $"б) через сколько месяцев размер вклада превысит C руб.\n" +
+                    $"{ count}");
 
             }
             else
