@@ -24,6 +24,7 @@ namespace FormsFor
         {
             string[] month = new string[] { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" };
             double money, per_money, pay;
+
             try
             {
                 money = double.Parse(this.textBox1.Text);
@@ -31,11 +32,11 @@ namespace FormsFor
                 pay = double.Parse(this.textBox3.Text);
 
             }
-            catch (FormatException) {
+            catch (FormatException) 
+            {
                 MessageBox.Show("Вы ввели некорректные данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-            
+            }            
         
             Properties.Settings.Default.money = money;
             Properties.Settings.Default.per_money = per_money;
