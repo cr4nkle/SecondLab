@@ -15,6 +15,9 @@ namespace FormsFor
         public Form1()
         {
             InitializeComponent();
+            textBox1.Text = Properties.Settings.Default.money.ToString();
+            textBox2.Text= Properties.Settings.Default.per_money.ToString();
+            textBox3.Text= Properties.Settings.Default.pay.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
